@@ -1,0 +1,87 @@
+import android.content.Context;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+public class ViewUtil {
+    private Context mContext;
+    private View mView;
+
+    public ViewUtil(Context context) {
+        mContext = context;
+    }
+
+    public ViewUtil setView(View view) {
+        mView = view;
+        return this;
+    }
+
+    public ViewUtil setPadding(int left, int top, int right, int bottom) {
+        if (mView != null) {
+            mView.setPadding(FitUtil.getFitSize(mContext, left), FitUtil.getFitSize(mContext, top), FitUtil.getFitSize(mContext, right), FitUtil.getFitSize(mContext, bottom));
+        }
+        return this;
+    }
+
+    public ViewUtil setWidth(int width) {
+        if (mView != null) {
+            mView.getLayoutParams().width = FitUtil.getFitSize(mContext, width);
+        }
+        return this;
+    }
+
+    public ViewUtil setHeight(int height) {
+        if (mView != null) {
+            mView.getLayoutParams().height = FitUtil.getFitSize(mContext, height);
+        }
+        return this;
+    }
+
+    public ViewUtil setLeftMargin(int leftMargin) {
+        if (mView != null) {
+            ViewGroup.LayoutParams lp = mView.getLayoutParams();
+            if (lp instanceof ViewGroup.MarginLayoutParams) {
+                ((ViewGroup.MarginLayoutParams) lp).leftMargin = FitUtil.getFitSize(mContext, leftMargin);
+            }
+        }
+        return this;
+    }
+
+    public ViewUtil setTopMargin(int topMargin) {
+        if (mView != null) {
+            ViewGroup.LayoutParams lp = mView.getLayoutParams();
+            if (lp instanceof ViewGroup.MarginLayoutParams) {
+                ((ViewGroup.MarginLayoutParams) lp).topMargin = FitUtil.getFitSize(mContext, topMargin);
+            }
+        }
+        return this;
+    }
+
+    public ViewUtil setRightMargin(int rightMargin) {
+        if (mView != null) {
+            ViewGroup.LayoutParams lp = mView.getLayoutParams();
+            if (lp instanceof ViewGroup.MarginLayoutParams) {
+                ((ViewGroup.MarginLayoutParams) lp).rightMargin = FitUtil.getFitSize(mContext, rightMargin);
+            }
+        }
+        return this;
+    }
+
+    public ViewUtil setBottomMargin(int bottomMargin) {
+        if (mView != null) {
+            ViewGroup.LayoutParams lp = mView.getLayoutParams();
+            if (lp instanceof ViewGroup.MarginLayoutParams) {
+                ((ViewGroup.MarginLayoutParams) lp).bottomMargin = FitUtil.getFitSize(mContext, bottomMargin);
+            }
+        }
+        return this;
+    }
+
+    public ViewUtil setTextSize(float value) {
+        if (mView != null && mView instanceof TextView) {
+            ((TextView) mView).setTextSize(TypedValue.COMPLEX_UNIT_SP, FitUtil.getFitTextSize(mContext, value));
+        }
+        return this;
+    }
+}

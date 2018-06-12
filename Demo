@@ -1,0 +1,6 @@
+ViewUtil viewUtil = new ViewUtil(context);
+TextView text = findViewById(R.id.text);
+viewUtil.setView(text)
+        .setWidth(200)
+        .setHeight(132)
+        .setTextSize(50);

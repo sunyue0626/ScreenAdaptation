@@ -1,0 +1,38 @@
+import android.content.Context;
+
+public class FitUtil {
+
+  public static int getScreenWidth(Context context) {
+    return context.getResources().getDisplayMetrics().widthPixels;
+  }
+	
+  public static int getScreenHeight(Context context) {
+    return context.getResources().getDisplayMetrics().heightPixels;
+  }
+	
+  public static int getFitSize(Context context, float value) {
+    // 这里的1080代表设计图的宽度像素值
+    int size = (int) ((value * context.getResources().getDisplayMetrics().widthPixels / 1080) + 0.5f);
+    
+    if (size == 0) {
+      size = 1;
+    }
+    return size;
+    }
+    
+    public static int getFitTextSize(Context context, float value) {
+      return px2sp(context, getFitSize(context, value));
+    }
+    
+    private static int px2sp(Context context, float pxValue) {
+      int size = 0;
+		
+      final float scale = context.getResources().getDisplayMetrics().density;  
+      size = (int) (pxValue / scale + 0.5f);
+        
+      if (size == 0) {
+        size = 1;
+      }
+      return size;
+    }
+}
